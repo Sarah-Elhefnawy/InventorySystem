@@ -2,13 +2,12 @@
 {
 	internal class Program
 	{
-		//when initializing any attribute, variable or method --> it MUST be static as you won't initialize new object
 		const int numberOfProducts = 50;
 
-		string[,] inventory = new string[50,3];
+		static string[,] inventory = new string[50,3];
 		//ID ==> 50 rows + 3 columns
 
-		int productCount = 0;	
+		static int productCount = 0;	
 
 		static void Main(string[] args)
 		{
@@ -45,8 +44,6 @@
 				default:
 					//update product
 					break;
-
-
 			}
 		}
 
@@ -56,12 +53,18 @@
 			string name = Console.ReadLine();
 
 			Console.WriteLine("Enter Product Quantity:");
-			int quantity = int.Parse(Console.ReadLine());
+			string quantity = Console.ReadLine();
 
 			Console.WriteLine("Enter Product Price:");
-			double price = double.Parse(Console.ReadLine());
+			string price = Console.ReadLine();
 
-			Inventory = 
+			inventory[productCount, 0] = name;
+			inventory[productCount, 1] = quantity;
+			inventory[productCount, 2] = price;
+
+			productCount++;
+
+			Console.WriteLine("Product added successfully!!!");
 		}
 	}
 }
