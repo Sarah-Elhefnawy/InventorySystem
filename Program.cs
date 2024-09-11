@@ -1,4 +1,6 @@
-﻿namespace InventorySystem
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace InventorySystem
 {
 	internal class Program
 	{
@@ -16,35 +18,41 @@
 			// View product ( ID , Name , Quantity
 			// Exit
 
-			Console.WriteLine("Welcome to the inventory system");
-			Console.WriteLine("==================================");
-			Console.WriteLine("1. Add Product");
-			Console.WriteLine("2. Update Product");
-			Console.WriteLine("3. View Product");
-			Console.WriteLine("4. Exit");
+			//To make the application not exit the switch and continue the loop ==>>>> while loop
 
-			//int userInput = Convert.ToInt32(Console.ReadLine());
-			int userInput = int.Parse(Console.ReadLine());
-
-			switch(userInput)
+			while(true)
 			{
-				case 1:
-					//add product
-					AddProduct();
-					break;
-				case 2:
-					//update product
-					break;
-				case 3:
-					//view product
-					break;
-				case 4:
-					Environment.Exit(0);
-					break;
-				default:
-					//update product
-					break;
+				Console.WriteLine("Welcome to the inventory system");
+				Console.WriteLine("==================================");
+				Console.WriteLine("1. Add Product");
+				Console.WriteLine("2. Update Product");
+				Console.WriteLine("3. View Product");
+				Console.WriteLine("4. Exit");
+
+				//int userInput = Convert.ToInt32(Console.ReadLine());
+				int userInput = int.Parse(Console.ReadLine());
+
+				switch (userInput)
+				{
+					case 1:
+						AddProduct();
+						break;
+					case 2:
+						//update product
+						break;
+					case 3:
+						ViewProducts();
+						break;
+					case 4:
+						Environment.Exit(0);
+						break;
+					default:
+						Console.WriteLine("Please enter number from 1 to 4 only!!!");
+						break;
+				}
 			}
+
+			
 		}
 
 		private static void AddProduct()
@@ -66,5 +74,20 @@
 
 			Console.WriteLine("Product added successfully!!!");
 		}
+
+		private static void ViewProducts()
+		{
+			if(productCount>0)
+			{
+				Console.WriteLine("Product List: ");
+
+                for(int i=0; i < productCount; i++)
+                {
+					Console.WriteLine($"Product ID: {i+1} Product Name: {inventory[i, 0]} Product Quantity: {inventory[i, 1]} Product Price: {inventory[i, 2]} ");
+                }
+            }
+		}
+
+		
 	}
 }
