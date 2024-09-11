@@ -38,7 +38,7 @@ namespace InventorySystem
 						AddProduct();
 						break;
 					case 2:
-						//update product
+						UpdateProduct();
 						break;
 					case 3:
 						ViewProducts();
@@ -88,6 +88,37 @@ namespace InventorySystem
             }
 		}
 
-		
+		private static void UpdateProduct()
+		{
+			Console.WriteLine("Enter product name to update: ");
+			string searchProduct = Console.ReadLine();
+
+			int productID = -1;
+
+			if (productCount>0)
+			{
+				for (int i = 0; i < productCount; i++)
+				{
+					if (inventory[i,0] == searchProduct)
+					{
+						productID= i;
+						break;
+					}
+				}
+				if (productID !=-1)
+				{
+					Console.WriteLine("Enter the new quantity: ");
+					string newQuantity = Console.ReadLine();
+
+					inventory[productID, 1] = newQuantity;
+
+					Console.WriteLine("Quantity updated successfully!!");
+				}
+				else
+				{
+					Console.WriteLine("Product is not found!");
+				}
+			}
+		}
 	}
 }
