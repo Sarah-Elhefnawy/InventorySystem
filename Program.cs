@@ -6,7 +6,7 @@ namespace InventorySystem
 	{
 		const int numberOfProducts = 50;
 
-		static string[,] inventory = new string[50,3];
+		static string[,] inventory = new string[numberOfProducts,3];
 		//ID ==> 50 rows + 3 columns
 
 		static int productCount = 0;	
@@ -15,7 +15,7 @@ namespace InventorySystem
 		{
 			// Add product
 			// Update product
-			// View product ( ID , Name , Quantity
+			// View product ( ID , Name , Quantity , Price )
 			// Exit
 
 			//To make the application not exit the switch and continue the loop ==>>>> while loop
@@ -38,7 +38,7 @@ namespace InventorySystem
 						AddProduct();
 						break;
 					case 2:
-						UpdateProduct();
+						UpdateProductQuantity();
 						break;
 					case 3:
 						ViewProducts();
@@ -51,8 +51,6 @@ namespace InventorySystem
 						break;
 				}
 			}
-
-			
 		}
 
 		private static void AddProduct()
@@ -88,9 +86,9 @@ namespace InventorySystem
             }
 		}
 
-		private static void UpdateProduct()
+		private static void UpdateProductQuantity()
 		{
-			Console.WriteLine("Enter product name to update: ");
+			Console.WriteLine("Enter product name to update its quantity: ");
 			string searchProduct = Console.ReadLine();
 
 			int productID = -1;
